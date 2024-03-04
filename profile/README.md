@@ -70,6 +70,7 @@ Drone software for locating animals with a focus on dogs.
          1. OpenCV
          2. YOLOv8
          3. Python
+         4. FastAPI
    5. Flight Service
       1. No implementation plan yet
       2. Ideas
