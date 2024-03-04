@@ -46,6 +46,7 @@ Drone software for locating animals with a focus on dogs.
          1. <https://github.com/CodexLabsLLC/Colosseum>
          2. <https://microsoft.github.io/AirSim/>
          3. <https://gazebosim.org/home>
+      4. For Colosseum See: <https://github.com/animal-locator-drone/simulation>
       2. Flight Controller
          1. For the flight controller we will use PX4 in SITL mode
             1. <https://px4.io>
