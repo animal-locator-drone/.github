@@ -8,6 +8,7 @@ Drone software for locating animals with a focus on dogs.
 
 1. Proposed design diagram
    1. <https://excalidraw.com/#room=7e2e5fed98110a848b6a,OxINdgfSKA8y0GQ-5m-grA>
+![Alt text](https://github.com/animal-locator-drone/.github/blob/main/proposed_design_diagram.svg)
 2. The overall design is as follows.
    1. The goal is for a user to be able to use a drone that will fly over a large area of ground autonomously and try to locate dogs in real time.
    2. Drone
