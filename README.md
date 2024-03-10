@@ -6,26 +6,63 @@ Drone software for locating animals with a focus on dogs.
 
 ### Design
 
-#### 20240309 Proposed design based on using primarily simulators.
+#### 20240309 Proposed design based on using primarily simulators
 
 - Initial Author: Ziad Arafat
 
 ##### 1 Overview
 
 1. In this design we will focus on implementing compoments in a simulation environment rather than having to worry about implementing things around a particular drone setup.
-2. Things such as drone connectivity, availablity of a secondary board etc. won't need to be a consideration. 
-3. However, in order to help make this design portable and adaptable to a wide range of drone setups we will make it modular and non monolithic in nature. 
+2. Things such as drone connectivity, availablity of a secondary board etc. won't need to be a consideration.
+3. However, in order to help make this design portable and adaptable to a wide range of drone setups we will make it modular and non monolithic in nature.
    1. This means we will break up functionality into multiple running services
       1. Dare I say "microservices"
-4. Some real challenges we have identified with designing this system. 
+4. Some real challenges we have identified with designing this system.
    1. What is the necessary flow of logic when it comes to identifying dogs and further investigating the found dog?
    2. How do we efficiently stream video data from the cameras and deliver it to multiple endpoints that need it?
    3. Which endpoints need said video and which do not?
-   4. In the context of having a physical drone we encountered these challenges which we hope to not deal with in simulated setups. 
+   4. In the context of having a physical drone we encountered these challenges which we hope to not deal with in simulated setups.
       1. How do we connect the end user to the drone?
       2. How do we stream video data and to whom given the limitations of connectivity?
+5. Updated model for defining and refining the design documentation.
+   1. RADIO model
+      1. <https://www.greatfrontend.com/system-design/framework>
 
-##### 2 
+##### 2 R A D I O
+
+###### 1 **R**equirements Exploration
+
+1. We will maintain a list of functional requirements and non-functional requirements here.
+   1. **Functional Requirements** (What does it do for the user?)
+      1. **Primary Requirements** (These are essential for an MVP)
+         1. The system will help the user quickly locate their lost dog.
+            1. The drone can autonomously follow waypoints set by the user.
+            2. During flight the user will receive real-time detections of dogs on the ground
+               1. A "detection" constitutes the following
+                  1. A photo or multiple photos of the detected dog.
+                  2. The precise location of the dog.
+                  3. A graphical map representation of the location.
+                  4. Directions to navigate in person to the location (like google maps).
+               2. The user will be able to browse through detections of dogs
+               3. For each detection
+                  1. The user can indicate if it should be ignored or investigated further.
+            3. For each detection that is marked for further investigation.
+               1. The drone will autonomously track the dog and attempt to get a better view of the dog.
+               2. As the drone is doing this
+                  1. The user can cancel at any time to continue the search for other dogs.
+                  2. The user can indicate that this is the correct dog and begin efforts of recovery.
+            4. When the user has begun recovery efforts the drone can be used to continue tracking the location of the found dog until recovered.
+   2. **Non-functional requirements** (Constraints and general operational requirements)
+      1. The UI needs to be user friendly.
+      2. Drones need to be operated safely and in accordance to laws and FAA regulations.
+      3. One intended use case is for there to be a community drone that can be operated for a community to help locate lost dogs.
+         1. Therefore it's important to consider the cost and easy of setup for this use case.
+2. We will explore and discuss requirements by making change requests to this document and referencing by number.
+   1. To do this
+      1. Open a github issue on this repo
+      2. Indicate which requirement should be changed or added or removed
+      3. Can be references to multiple if they are in the same scope of the change.
+
 
 #### First Proposed Design
 
