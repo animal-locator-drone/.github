@@ -8,10 +8,12 @@ Drone software for locating animals with a focus on dogs.
 
 #### 20240309 Proposed design based on using primarily simulators.
 
+- Initial Author: Ziad Arafat
+
 ##### 1 Overview
 
 1. In this design we will focus on implementing compoments in a simulation environment rather than having to worry about implementing things around a particular drone setup.
-2. Things such as drone connectivity, availablity of a secondary board etc. won't be a consideration. 
+2. Things such as drone connectivity, availablity of a secondary board etc. won't need to be a consideration. 
 3. However, in order to help make this design portable and adaptable to a wide range of drone setups we will make it modular and non monolithic in nature. 
    1. This means we will break up functionality into multiple running services
       1. Dare I say "microservices"
