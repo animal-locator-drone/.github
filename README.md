@@ -57,12 +57,30 @@ Drone software for locating animals with a focus on dogs.
       2. Drones need to be operated safely and in accordance to laws and FAA regulations.
       3. One intended use case is for there to be a community drone that can be operated for a community to help locate lost dogs.
          1. Therefore it's important to consider the cost and easy of setup for this use case.
-2. We will explore and discuss requirements by making change requests to this document and referencing by number.
-   1. To do this
-      1. Open a github issue on this repo
-      2. Indicate which requirement should be changed or added or removed
-      3. Can be references to multiple if they are in the same scope of the change.
 
+###### 2 **A**rchitecture and high level design
+
+1. Key Components and their relations
+   1. Simulation Machine (Powerful machine that will run the simulated drone and it's other services)
+      1. Simulation
+         1. This is used to simulate the physical drone and the environment it interacts with. This is likely going to be Airsim/Colosseum or Gazebo.
+      2. PX4 SITL
+         1. PX4 is the firmware used on many drones and it can run Software-In-The-Loop mode which means it is simulated in software.
+         2. This can connect to a simulation platform.
+      3. Video Broadcaster
+         1. Takes a video stream as input and will process it and allow other clients to subscribe to the broadcast.
+      4. Dog detector
+         1. This service will read in video data and make predictions on where there are dogs or other important features in the video. It can do this in real time.
+      5. Captain
+         1. The captain is responsible for guiding the drone based on user inputs and other factors.
+      6. Application server
+         1. The application server provides an interface between the user device and other services on the simulated drone. It does this by serving a web application and a web API.
+   2. User device (A device used to access the UI application and command/monitor the mission.)
+      1. Web Application
+         1. This web application will be served from the application server and run in a web browser. 
+   3. Pilot Device (specialized device that is meant for an experienced pilot to monitor and control the drone as needed.)
+      1. QGroundControl
+         1. This is the standard software used for configuring and commanding PX4 flight stacks.
 
 #### First Proposed Design
 
