@@ -6,6 +6,27 @@ Drone software for locating animals with a focus on dogs.
 
 ### Design
 
+#### 20240309 Proposed design based on using primarily simulators.
+
+##### 1 Overview
+
+1. In this design we will focus on implementing compoments in a simulation environment rather than having to worry about implementing things around a particular drone setup.
+2. Things such as drone connectivity, availablity of a secondary board etc. won't be a consideration. 
+3. However, in order to help make this design portable and adaptable to a wide range of drone setups we will make it modular and non monolithic in nature. 
+   1. This means we will break up functionality into multiple running services
+      1. Dare I say "microservices"
+4. Some real challenges we have identified with designing this system. 
+   1. What is the necessary flow of logic when it comes to identifying dogs and further investigating the found dog?
+   2. How do we efficiently stream video data from the cameras and deliver it to multiple endpoints that need it?
+   3. Which endpoints need said video and which do not?
+   4. In the context of having a physical drone we encountered these challenges which we hope to not deal with in simulated setups. 
+      1. How do we connect the end user to the drone?
+      2. How do we stream video data and to whom given the limitations of connectivity?
+
+##### 2 
+
+#### First Proposed Design
+
 1. Proposed design diagram
    1. <https://excalidraw.com/#room=7e2e5fed98110a848b6a,OxINdgfSKA8y0GQ-5m-grA>
 ![Alt text](https://github.com/animal-locator-drone/.github/blob/main/proposed_design_diagram.svg)
