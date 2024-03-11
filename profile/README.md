@@ -79,7 +79,12 @@ Drone software for locating animals with a focus on dogs.
          1. This is the standard software used for configuring and commanding PX4 flight stacks.
 2. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
 
-#### 3 **R**
+#### 3 **D**ata Model
+
+1. Description of various data entities, the fields they contain and which components they belong to.
+2. Data Entities
+   1. See Table 1 in Appendix
+3. 
 
 ## First Proposed Design
 
@@ -133,6 +138,13 @@ Drone software for locating animals with a focus on dogs.
          5. ABORT MISSION
             1. Button to abort the current mission.
             2. Always visible
+         6. Status Bar
+            1. Bar at the top displaying mission status info
+            2. Subviews
+               1. Battery indicator
+               2. Clock
+                  1. Current Time, Time Elapsed, Estimated Time Remaining
+               3. Progress Bar
       3. Controller
          1. Processes data produced by the user as well as data retrieved from the backend server.
          2. Caters the data to be best viewed by the individual "Views"
@@ -186,3 +198,20 @@ Drone software for locating animals with a focus on dogs.
       1. No plan yet but anticipate a laptop or tablet or phone
    2. Frontend App
       1. See: <https://github.com/animal-locator-drone/dogfinder-app/wiki/Proposed-Solution>
+
+## Appendix
+
+### 1 Table 1 Data Entities Table
+
+| Entity                         | Source             | Belongs To               | Fields                                                                       | Other |
+| ------------------------------ | ------------------ | ------------------------ | ---------------------------------------------------------------------------- | ----- |
+| **Video Stream**               | Simulation         | Dog Detector             |                                                                              |       |
+| **Select Telemetry**           | Captain            | Application Server       | battery_level, time_elapsed, coordinates                                     |       |
+| **Detection**                  | Dog Detector       | Controller, Client Store | Location, Images                                                             |       |
+| **Available Missions**         | Missions Database  | Controller               | Name, Data(for PX4), Map Preview Data                                        |       |
+| **Detections on Video Stream** | Dog Detector       | Video View               |                                                                              |       |
+| **Dog Selection**              | Detections Feed    | Is This Your Dog         | dog_id                                                                       |       |
+| **Mission Status**             | Application Server | Status Bar               | battery_percent, mission_progress, time_elapsed, time_remaining, in_progress |       |
+|                                |                    |                          |                                                                              |       |
+|                                |                    |                          |                                                                              |       |
+
