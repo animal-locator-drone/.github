@@ -2,15 +2,11 @@
 
 Drone software for locating animals with a focus on dogs.
 
-## Proposed overall design and implementation
-
-### Design
-
-#### 20240309 Proposed design based on simulators
+## 20240309 Proposed design based on simulators
 
 - Initial Author: Ziad Arafat
 
-##### 1 Overview
+### 1 Overview
 
 1. In this design we will focus on implementing compoments in a simulation environment rather than having to worry about implementing things around a particular drone setup.
 2. Things such as drone connectivity, availablity of a secondary board etc. won't need to be a consideration.
@@ -28,9 +24,9 @@ Drone software for locating animals with a focus on dogs.
    1. RADIO model
       1. <https://www.greatfrontend.com/system-design/framework>
 
-##### 2 R A D I O
+### 2 R A D I O
 
-###### 1 **R**equirements Exploration
+#### 1 **R**equirements Exploration
 
 1. We will maintain a list of functional requirements and non-functional requirements here.
    1. **Functional Requirements** (What does it do for the user?)
@@ -58,7 +54,7 @@ Drone software for locating animals with a focus on dogs.
       3. One intended use case is for there to be a community drone that can be operated for a community to help locate lost dogs.
          1. Therefore it's important to consider the cost and easy of setup for this use case.
 
-###### 2 **A**rchitecture and high level design
+#### 2 **A**rchitecture and high level design
 
 1. Key Components and their relations
    1. Simulation Machine (Powerful machine that will run the simulated drone and it's other services)
@@ -83,9 +79,9 @@ Drone software for locating animals with a focus on dogs.
          1. This is the standard software used for configuring and commanding PX4 flight stacks.
 2. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
 
-###### 3 **R**
+#### 3 **R**
 
-#### First Proposed Design
+## First Proposed Design
 
 1. Proposed design diagram
    1. <https://excalidraw.com/#room=7e2e5fed98110a848b6a,OxINdgfSKA8y0GQ-5m-grA>
@@ -148,7 +144,7 @@ Drone software for locating animals with a focus on dogs.
       2. This is a requirement by the FAA for all autonomous drones and a critical safety measure.
       3. Communicates directly with PX4 SITL via mavlink.
 
-### Implementation
+## Implementation
 
 1. Drone platform
    1. Simulated drone
