@@ -77,11 +77,13 @@ Drone software for locating animals with a focus on dogs.
          1. The application server provides an interface between the user device and other services on the simulated drone. It does this by serving a web application and a web API.
    2. User device (A device used to access the UI application and command/monitor the mission.)
       1. Web Application
-         1. This web application will be served from the application server and run in a web browser. 
+         1. This web application will be served from the application server and run in a web browser.
    3. Pilot Device (specialized device that is meant for an experienced pilot to monitor and control the drone as needed.)
       1. QGroundControl
          1. This is the standard software used for configuring and commanding PX4 flight stacks.
 2. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
+
+###### 3 **R**
 
 #### First Proposed Design
 
@@ -114,9 +116,38 @@ Drone software for locating animals with a focus on dogs.
          2. Customize settings for searching for dogs.
          3. See the current status of the mission
          4. See images of dogs and generally what the drone sees  
+      2. Views
+         1. Dog Finder
+            1. Subviews
+               1. Feed of detected dogs
+                  1. Allows you to see pictures of found dogs and browse through them. 
+                  2. Selecting one will display it in "is this your dog"
+               2. "Is this your dog" card
+                  1. Includes a picture of the dog
+                  2. location of the dog on map
+                  3. Option to select if it should be further investigated or ignored.
+         2. Video View
+            1. A live stream showing what the drone sees and detections on screen in real time. 
+         3. Map View
+            1. An interactive map
+               1. Location of drone
+               2. Locations of detected dogs. 
+         4. Select Mission
+            1. View at the beginning to select which mission the drone should fly.
+            2. Also displays a map showing the route of the mission.
+         5. ABORT MISSION
+            1. Button to abort the current mission.
+            2. Always visible
+      3. Controller
+         1. Processes data produced by the user as well as data retrieved from the backend server.
+         2. Caters the data to be best viewed by the individual "Views"
+         3. Stores and retrieves data from the client's local data store. "Client Store"
+      4. Client Store
+         1. Used to store data relevant to the current mission in the RAM of the client.
    4. Ground Pilot Device
       1. The ground pilot device will allow a pilot to monitor and take emergency manual control of the drone.
       2. This is a requirement by the FAA for all autonomous drones and a critical safety measure.
+      3. Communicates directly with PX4 SITL via mavlink.
 
 ### Implementation
 
