@@ -6,7 +6,7 @@ Drone software for locating animals with a focus on dogs.
 
 ### Design
 
-#### 20240309 Proposed design based on using primarily simulators
+#### 20240309 Proposed design based on simulators
 
 - Initial Author: Ziad Arafat
 
