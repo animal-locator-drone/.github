@@ -81,7 +81,7 @@ Drone software for locating animals with a focus on dogs.
    3. Pilot Device (specialized device that is meant for an experienced pilot to monitor and control the drone as needed.)
       1. QGroundControl
          1. This is the standard software used for configuring and commanding PX4 flight stacks.
-2. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
+2. ![Architecture Diagram](./profile/20240310_simulated_systems_design_proposal.png)
 
 ###### 3 **R**
 
