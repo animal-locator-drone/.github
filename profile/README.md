@@ -30,24 +30,23 @@ Drone software for locating animals with a focus on dogs.
 
 1. We will maintain a list of functional requirements and non-functional requirements here.
    1. **Functional Requirements** (What does it do for the user?)
-      1. **Primary Requirements** (These are essential for an MVP)
-         1. The system will help the user quickly locate their lost dog.
-            1. The drone can autonomously follow waypoints set by the user.
-            2. During flight the user will receive real-time detections of dogs on the ground
-               1. A "detection" constitutes the following
-                  1. A photo or multiple photos of the detected dog.
-                  2. The precise location of the dog.
-                  3. A graphical map representation of the location.
-                  4. Directions to navigate in person to the location (like google maps).
-               2. The user will be able to browse through detections of dogs
-               3. For each detection
-                  1. The user can indicate if it should be ignored or investigated further.
-            3. For each detection that is marked for further investigation.
-               1. The drone will autonomously track the dog and attempt to get a better view of the dog.
-               2. As the drone is doing this
-                  1. The user can cancel at any time to continue the search for other dogs.
-                  2. The user can indicate that this is the correct dog and begin efforts of recovery.
-            4. When the user has begun recovery efforts the drone can be used to continue tracking the location of the found dog until recovered.
+      1. The system will help the user quickly locate their lost dog.
+         1. The drone can autonomously follow waypoints set by the user.
+         2. During flight the user will receive real-time detections of dogs on the ground
+            1. A "detection" constitutes the following
+               1. A photo or multiple photos of the detected dog.
+               2. The precise location of the dog.
+               3. A graphical map representation of the location.
+               4. Directions to navigate in person to the location (like google maps).
+            2. The user will be able to browse through detections of dogs
+            3. For each detection
+               1. The user can indicate if it should be ignored or investigated further.
+         3. For each detection that is marked for further investigation.
+            1. The drone will autonomously track the dog and attempt to get a better view of the dog.
+            2. As the drone is doing this
+               1. The user can cancel at any time to continue the search for other dogs.
+               2. The user can indicate that this is the correct dog and begin efforts of recovery.
+         4. When the user has begun recovery efforts the drone can be used to continue tracking the location of the found dog until recovered.
    2. **Non-functional requirements** (Constraints and general operational requirements)
       1. The UI needs to be user friendly.
       2. Drones need to be operated safely and in accordance to laws and FAA regulations.
@@ -117,7 +116,18 @@ Drone software for locating animals with a focus on dogs.
          1. `None`
       5. Response
          1. `{"status_info": {"battery_percent": 69, "time_elapsed": 200, "current_location": [420.69, 69.420], "time_remaining": 500, "progress_percent": 69}}`
-   4. 
+   4. detections
+      1. HTTP Method: `GET`
+      2. Path: `/detections`
+      3. Descriptions: A list of existing detections including links to hosted images of the detection.
+      4. Parameters
+         1. `None`
+      5. Response
+         1. `{"detections": [{"id": "1234", "location": [123,123], "time": "timeUTC", "images": ["www.link.to/image.png", "www.link.to/another_image.png"]}]}`
+3. Real-time broadcasts
+   1. New Detections
+      1. Dog Detector will broadcast new detections using socket-io.
+      2. The UI and the Application Server will listen to these and when a new detection is broadcast they will both update their state to display the latest detection.
 
 ## First Proposed Design
 
