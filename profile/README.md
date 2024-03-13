@@ -278,10 +278,10 @@ Drone software for locating animals with a focus on dogs.
 | ------------------------------ | ------------------ | ------------------------ | ---------------------------------------------------------------------------- | ----- |
 | **Video Stream**               | Simulation         | Dog Detector             |                                                                              |       |
 | **Select Telemetry**           | Captain            | Application Server       | battery_level, time_elapsed, coordinates                                     |       |
-| **Detection**                  | Dog Detector       | Controller, Client Store | Location, Images                                                             |       |
-| **Available Missions**         | Missions Database  | Controller               | Name, Data(for PX4), Map Preview Data                                        |       |
+| **Detection**                  | Dog Detector       | Controller, Client Store | id, Location, Images                                                         |       |
+| **Available Missions**         | Missions Database  | Controller               | id, Name, Map Preview Data                                                   |       |
 | **Detections on Video Stream** | Dog Detector       | Video View               |                                                                              |       |
 | **Dog Selection**              | Detections Feed    | Is This Your Dog         | dog_id                                                                       |       |
 | **Mission Status**             | Application Server | Status Bar               | battery_percent, mission_progress, time_elapsed, time_remaining, in_progress |       |
-|                                |                    |                          |                                                                              |       |
+| **Abort**                      | Controller         | PX4                      | ABORT                                                                        |       |
 |                                |                    |                          |                                                                              |       |
