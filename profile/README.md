@@ -124,7 +124,35 @@ Drone software for locating animals with a focus on dogs.
          1. `None`
       5. Response
          1. `{"detections": [{"id": "1234", "location": [123,123], "time": "timeUTC", "images": ["www.link.to/image.png", "www.link.to/another_image.png"]}]}`
-3. Real-time broadcasts
+   5. abort
+      1. HTTP Method: `POST`
+      2. Path: `/abort_mission`
+      3. Description: Immediately end the mission and RTL (sent to captain)
+      4. Parameters
+         1. `None`
+      5. Respose
+         1. `{"status": "success"}`
+         2. `{"status": "failed"}`
+3. Captain
+   1. Available missions
+      1. HTTP Method: `GET`
+      2. Path: `/missions_available`
+      3. Description: A list of available missions that can be sent to the Drone.
+      4. Parameters
+         1. `None`
+      5. Response
+         1. `{"missions": [{"id": "123", "name": "Path A", "path_preview": "TODO"}]}`
+   2. abort
+      1. HTTP Method: `POST`
+      2. Path: `/abort_mission`
+      3. Description: Immediately end the mission and RTL sends directly to PX4
+      4. Parameters
+         1. `None`
+      5. Respose
+         1. `{"status": "success"}`
+         2. `{"status": "failed"}`
+4. 
+5. Real-time broadcasts
    1. New Detections
       1. Dog Detector will broadcast new detections using socket-io.
       2. The UI and the Application Server will listen to these and when a new detection is broadcast they will both update their state to display the latest detection.
