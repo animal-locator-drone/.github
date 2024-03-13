@@ -87,7 +87,37 @@ Drone software for locating animals with a focus on dogs.
 
 #### 4 **I**nterface Definition (API)
 
-
+1. For this iteration we are going to focus on server-client interaction.
+2. Application Server
+   1. missions_available
+      1. HTTP Method: `GET`
+      2. Path: `/missions_available`
+      3. Description: Fetches the available missions to pick from
+      4. Parameters
+         1. `None`
+      5. Response
+         1. `{"missions": [{"id": "123", "name": "Path A", "path_preview": "TODO"}]}`
+   2. select_mission
+      1. HTTP Method: `POST`
+      2. Path: `/select_mission`
+      3. Description: Select a mission to execute on the drone.
+      4. Parameters
+         1. `{"selected_mission": {"id": "123"}}`
+      5. Response
+         1. If mission exists
+            1. `{"status": "Mission Started"}`
+            2. `{"status": "Failed to Start Mission"}`
+         2. If not
+            1. `{"error": "No such mission"}`
+   3. mission_status
+      1. HTTP Method: `GET`
+      2. Path: `/mission_status`
+      3. Description: get current mission status info
+      4. Parameters
+         1. `None`
+      5. Response
+         1. `{"status_info": {"battery_percent": 69, "time_elapsed": 200, "current_location": [420.69, 69.420], "time_remaining": 500, "progress_percent": 69}}`
+   4. 
 
 ## First Proposed Design
 
@@ -123,18 +153,18 @@ Drone software for locating animals with a focus on dogs.
          1. Dog Finder
             1. Subviews
                1. Feed of detected dogs
-                  1. Allows you to see pictures of found dogs and browse through them. 
+                  1. Allows you to see pictures of found dogs and browse through them.
                   2. Selecting one will display it in "is this your dog"
                2. "Is this your dog" card
                   1. Includes a picture of the dog
                   2. location of the dog on map
                   3. Option to select if it should be further investigated or ignored.
          2. Video View
-            1. A live stream showing what the drone sees and detections on screen in real time. 
+            1. A live stream showing what the drone sees and detections on screen in real time.
          3. Map View
             1. An interactive map
                1. Location of drone
-               2. Locations of detected dogs. 
+               2. Locations of detected dogs.
          4. Select Mission
             1. View at the beginning to select which mission the drone should fly.
             2. Also displays a map showing the route of the mission.
@@ -217,4 +247,3 @@ Drone software for locating animals with a focus on dogs.
 | **Mission Status**             | Application Server | Status Bar               | battery_percent, mission_progress, time_elapsed, time_remaining, in_progress |       |
 |                                |                    |                          |                                                                              |       |
 |                                |                    |                          |                                                                              |       |
-
