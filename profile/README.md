@@ -55,7 +55,8 @@ Drone software for locating animals with a focus on dogs.
 
 #### 2 **A**rchitecture and high level design
 
-1. Key Components and their relations
+1. Excalidraw Link <https://excalidraw.com/#room=0bce184d057265cbe4c8,P5FUULkvaY4YWWWxdnA5VQ>
+2. Key Components and their relations
    1. Simulation Machine (Powerful machine that will run the simulated drone and it's other services)
       1. Simulation
          1. This is used to simulate the physical drone and the environment it interacts with. This is likely going to be Airsim/Colosseum or Gazebo.
@@ -76,7 +77,7 @@ Drone software for locating animals with a focus on dogs.
    3. Pilot Device (specialized device that is meant for an experienced pilot to monitor and control the drone as needed.)
       1. QGroundControl
          1. This is the standard software used for configuring and commanding PX4 flight stacks.
-2. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
+3. ![Architecture Diagram](./20240310_simulated_systems_design_proposal.png)
 
 #### 3 **D**ata Model
 
@@ -151,7 +152,7 @@ Drone software for locating animals with a focus on dogs.
       5. Respose
          1. `{"status": "success"}`
          2. `{"status": "failed"}`
-4. 
+4. detector-service
 5. Real-time broadcasts
    1. New Detections
       1. Dog Detector will broadcast new detections using socket-io.
